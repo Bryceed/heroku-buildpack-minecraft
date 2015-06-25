@@ -29,9 +29,12 @@ export CPPPATH="\$INCLUDE_PATH"
 export PKG_CONFIG_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu/pkgconfig:\$HOME/.apt/usr/lib/i386-linux-gnu/pkgconfig:\$HOME/.apt/usr/lib/pkgconfig:\$PKG_CONFIG_PATH"
 EOF
 
-for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
-  dpkg -x $DEB $BUILD_DIR/.apt/
-done
+if [ -f "$APT_CACHE_DIR/archives/*.deb" ]
+then
+  for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
+    dpkg -x $DEB $BUILD_DIR/.apt/
+  done
+fi
 
 echo -n "-----> Installing ngrok... "
 curl --silent -o ngrok.zip -L "https://dl.ngrok.com/ngrok_2.0.17_linux_amd64.zip" | indent
