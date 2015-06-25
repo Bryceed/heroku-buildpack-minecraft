@@ -14,12 +14,6 @@ echo "Starting ngrok..."
 eval "$ngrok_cmd | tee ngrok.log &"
 ngrok_pid=$!
 
-# Do an inline sync first, then start the background job
-echo "Starting sync..."
-bin/sync
-eval "while true; do sleep ${AWS_SYNC_INTERVAL:-60}; bin/sync; done &"
-sync_pid=$!
-
 # create server config
 echo "server-port=${mc_port}" >> /app/server.properties
 touch whitelist.json
@@ -27,18 +21,7 @@ touch banned-players.json
 touch banned-ips.json
 touch ops.json
 
-limit=$(ulimit -u)
-case $limit in
-  512)   # 2X Dyno
-  heap="768m"
-  ;;
-  32768) # PX Dyno
-  heap="4g"
-  ;;
-  *)     # 1X Dyno
-  heap="384m"
-  ;;
-esac
+heap="512m"
 
 echo "Starting: minecraft ${mc_port}"
 eval "java -Xmx${heap} -Xms${heap} -jar minecraft.jar nogui &"
