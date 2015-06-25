@@ -1,6 +1,6 @@
 <% open('ngrok.log') do |f| %>
   <% f.lines.select { |line| line.include?("URL:") }.each do |line| %>
-    <%= line %>
+    <%= "Gerzer Build server address: " + line.gsub(/.+tcp\:\/\//, "").gsub(/\sProto.+/, "") %>
     <br />
   <% end %>
 <% end %>
