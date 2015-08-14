@@ -1,7 +1,7 @@
 # Heroku Minecraft Buildpack
 
 This is a [Heroku Buildpack](https://devcenter.heroku.com/articles/buildpacks)
-for running a Minecraft server in a [dyno](https://devcenter.heroku.com/articles/dynos).
+for running a Minecraft server in a [dyno](https://devcenter.heroku.com/articles/dynos). This fork removes the Amazon S3 requirement for those who don't need persistent storage. Because of this, **Heroku will automatically revert all files generated at runtime**. This means that **after all server connections are closed, it will be as if all files had just been uploaded to Heroku.** **Make any permanent changes to the server _locally_**.
 
 ## Usage
 
