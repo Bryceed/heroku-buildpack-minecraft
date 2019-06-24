@@ -41,10 +41,10 @@ curl --silent -o ngrok.zip -L "https://dl.ngrok.com/ngrok_2.0.17_linux_amd64.zip
 unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
-mincraft_jar=${MINECRAFT_JAR:-"https://deltaverse.rydermais.com/paper-1615.jar"}
-minecraft_url="https://${mincraft_jar}"
+minecraft_jar=${MINECRAFT_JAR:-"deltaverse.rydermais.com/paper-1615.jar"}
+minecraft_url="https://${minecraft_jar}"
 
-echo -n "-----> Installing Minecraft ${mincraft_version}... "
+echo -n "-----> Installing Minecraft Server from ${minecraft_jar}... "
 curl -o minecraft.jar -s -L $minecraft_url
 mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
