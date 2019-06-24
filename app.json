@@ -13,7 +13,7 @@
     },
     "MINECRAFT_JAR": {
       "description": "Include an .jar file link to use as your server (remove the \"https://\" part from the address).",
-      "value": "s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar"
+      "value": "deltaverse.rydermais.com/paper-1615.jar"
     },
     "NGROK_API_TOKEN": {
       "description": "Your personal Ngrok API token",
